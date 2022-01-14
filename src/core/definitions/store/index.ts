@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import { reactive, readonly, watch } from 'vue';
 
 export abstract class Store<T extends Record<string, unknown>> {
@@ -27,7 +29,7 @@ export abstract class PersistentStore<T extends Record<string, unknown>> extends
   constructor(storeName: string) {
     super();
     if (storeName.length === 0) {
-      console.log('Store name cannot be empty');
+      console.error('Store name cannot be empty');
     }
     this.storeName = storeName;
     const values = this.loadItems();
@@ -52,7 +54,7 @@ export abstract class PersistentStore<T extends Record<string, unknown>> extends
       try {
         return JSON.parse(values);
       } catch (e) {
-        console.log(e);
+        console.error(e);
       }
     }
     return null;
