@@ -101,7 +101,7 @@ export default defineComponent({
     const { showCookies, onUpdateShowModal } = logicComposable();
 
     const setCookie = () => {
-      App.Methods.setCookie({ name: 'flyleaf_cookies_accepted', value: 'true' });
+      App.Methods.setCookie({ name: 'flyleaf_cookies_accepted', value: 'true', days: 60 });
       sessionManager.setCookiesAccepted();
     };
     return {
